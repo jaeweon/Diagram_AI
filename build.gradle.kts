@@ -11,17 +11,23 @@ repositories {
     mavenCentral()
 }
 
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
+// IntelliJ 플러그인 설정
 intellij {
     version.set("2022.2.5")
-    type.set("IC") // Target IDE Platform
+    type.set("IC") // Community Edition
+    // 플러그인 의존성: java, kotlin 등
+    plugins.set(listOf("java", "org.jetbrains.kotlin"))
+}
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+dependencies {
+    // 라이브러리 의존성 (PlantUML, Lombok, Spring 등)
+    implementation("net.sourceforge.plantuml:plantuml:1.2023.8")
+    implementation("org.springframework:spring-context:5.3.29")
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
 }
 
 tasks {
-    // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "17"
         targetCompatibility = "17"
@@ -33,6 +39,10 @@ tasks {
     patchPluginXml {
         sinceBuild.set("222")
         untilBuild.set("232.*")
+    }
+
+    runIde {
+        jvmArgs = listOf("-Xmx2G")
     }
 
     signPlugin {

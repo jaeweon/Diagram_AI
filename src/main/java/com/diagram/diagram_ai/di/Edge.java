@@ -1,4 +1,4 @@
-package com.board.flowai.di;
+package com.diagram.diagram_ai.di;
 
 public class Edge {
     private final String source;

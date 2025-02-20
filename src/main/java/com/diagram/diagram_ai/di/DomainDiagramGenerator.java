@@ -1,4 +1,4 @@
-package com.board.flowai.di;
+package com.diagram.diagram_ai.di;
 
 import net.sourceforge.plantuml.SourceStringReader;
 import com.intellij.openapi.project.Project;

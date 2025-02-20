@@ -1,30 +1,52 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <!-- Unique Plugin Identifier (do not change between releases) -->
     <id>com.diagram.Diagram_AI</id>
 
-    <!-- Public plugin name should be written in Title Case.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <!-- Plugin Name -->
     <name>Diagram_AI</name>
 
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+    <!-- Plugin Version (Optional: can also be specified in build.gradle) -->
+    <version>1.0-SNAPSHOT</version>
 
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <!-- Vendor Information -->
+    <vendor email="fhfkfk7890@gmail.com" url="https://github.com/jaeweon/jaeweon">LEE JAE WEON</vendor>
+
+    <!-- Plugin Description -->
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+      <h3>Diagram_AI</h3>
+      <p>
+        <strong>Diagram_AI</strong> utilizes Spring DI technology to analyze registered Beans and visualize domain relationships through clear, organized diagrams.
+      </p>
+      <ul>
+        <li>Automatically extracts Bean relationships by domain</li>
+        <li>Displays intuitive diagrams using PlantUML</li>
+        <li>Compatible with Java 11 and later</li>
+      </ul>
+      <p>
+        To use the plugin, simply download it and open your project. Diagrams will be automatically generated and saved to a predefined location.
+        You can also manually trigger diagram generation via the <strong>Tools &gt; Generate Diagram</strong> menu.
+      </p>
+      <p>
+        If you encounter any bugs or have suggestions for improvements, please share your feedback!
+      </p>
+    ]]></description>
 
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <!-- Plugin Compatibility: using Java module for DI analysis -->
+    <depends>com.intellij.modules.java</depends>
 
-    <!-- Extension points defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <!-- Extensions (if any) -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <!-- Example: Register a tool window if needed -->
     </extensions>
+
+    <!-- Action Registration -->
+    <actions>
+        <action id="GenerateDiagramAction"
+                class="com.diagram.diagram_ai.ui.MyPluginAction"
+                text="Generate Diagram"
+                description="Automatically generate a DI diagram for the current project.">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+
 </idea-plugin>
